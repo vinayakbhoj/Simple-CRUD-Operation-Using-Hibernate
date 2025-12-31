@@ -32,7 +32,13 @@ public class App {
         Transaction transaction = session.beginTransaction();
         
         // 5 - Perfoms operation
+         
+        // inserting data
         session.persist(s1);
+        
+        // gettting data 
+        Student ref = session.get(Student.class, 1);
+        System.out.println(ref);
         
         // 6 - commit Transaction
         transaction.commit();
