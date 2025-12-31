@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcom to SMS");
-//        Simple application using hibernate and mysql
+
         System.out.println("Enter student name, marks, email");
         Student s1 = new Student(sc.next(), sc.nextInt(), sc.next());
         
