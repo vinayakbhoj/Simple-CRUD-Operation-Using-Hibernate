@@ -37,8 +37,38 @@ public class App {
         session.persist(s1);
         
         // gettting data 
-        Student ref = session.get(Student.class, 1);
-        System.out.println(ref);
+        Student obj = session.get(Student.class, 2);
+        System.out.println(obj);
+        
+        // delete data - check whether data is present on DB or not
+        System.out.println("Enter user id to be deleted: ");
+        int id = sc.nextInt();
+        Student obj2 = session.get(Student.class, id);
+        if(obj2 != null) {
+        	session.remove(obj2);
+        	System.out.println("Data is deleted");
+        }else {
+        	System.out.println("Data is not present");
+        }
+        
+//        // update data - check whether data is present on DB or not
+        System.out.println("Enter user id to be update name and email: ");
+        int id2 = sc.nextInt();
+        
+        Student obj3 = session.get(Student.class, id2);
+        if(obj3 != null) {
+        	System.out.println("Enter new name and email: ");
+        	String name = sc.next();
+        	String email = sc.next();
+        	obj3.setName(name);
+        	obj3.setEmail(email);
+        	session.merge(obj3); // or you should use session.persists also
+        	System.out.println("Data is updated");
+        }else {
+        	System.out.println("Data is not present");
+        }
+        
+        
         
         // 6 - commit Transaction
         transaction.commit();
